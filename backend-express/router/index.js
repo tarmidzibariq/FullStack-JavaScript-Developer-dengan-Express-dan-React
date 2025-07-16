@@ -34,5 +34,8 @@ router.get('/admin/users', verifyToken, userController.findUser);
 // define route for create user
 router.post('/admin/users', verifyToken, validateUser, userController.createUser);
 
+// define route for find user by id
+router.get('/admin/users/:id', verifyToken, userController.findUserById);
+
 // module exports router
 module.exports = router;
