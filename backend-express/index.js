@@ -7,6 +7,9 @@ const cors = require('cors');
 // import body-parser
 const bodyParser = require('body-parser');
 
+// import router
+const router = require('./router');
+
 // init app
 const app = express();
 
@@ -26,6 +29,9 @@ const port = 3000;
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
+
+// define routes
+app.use('/api', router);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
