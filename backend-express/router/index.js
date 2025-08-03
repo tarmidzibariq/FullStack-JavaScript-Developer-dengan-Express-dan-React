@@ -37,5 +37,9 @@ router.post('/admin/users', verifyToken, validateUser, userController.createUser
 // define route for find user by id
 router.get('/admin/users/:id', verifyToken, userController.findUserById);
 
+// define route for update user
+router.put('/admin/users/:id', verifyToken, validateUser, userController.updateUser);
+
+
 // module exports router
 module.exports = router;
