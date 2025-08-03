@@ -164,5 +164,33 @@ const updateUser = async (req, res) => {
     }
 
 }
+
+// delete user
+const deleteUser = async (req, res) => {
+    // get ID from request params
+    const { id } = req.params;
+
+    try {
+        // delete user
+        await prisma.user.delete({
+            where: {
+                id: Number(id),
+            },
+        });
+
+        // send response
+        res.status(200).send({
+            success: true,
+            message: `User with ID ${id} deleted successfully`,
+        });
+
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: 'Internal server error',
+        });
+    }
+}
+
 // module exports
-module.exports = { findUser, createUser, findUserById, updateUser };
+module.exports = { findUser, createUser, findUserById, updateUser, deleteUser };
